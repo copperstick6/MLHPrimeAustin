@@ -19,3 +19,7 @@ def addingOpps():
         if request.form['date'] > curTime:
             newList = [request.form['opportunity'], request.form['curPerson'], request.form['date'], request.form['description']]
             oppList.append(newList)
+
+@app.route('/curData', methods = ['GET'])
+def returnOpps():
+    return oppList
