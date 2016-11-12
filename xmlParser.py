@@ -8,9 +8,9 @@ def parseFrom(url_str):
     startdates = doc.getElementsByTagName('startDate')
     enddates = doc.getElementsByTagName('endDate')
     streets = doc.getElementsByTagName('street')
-    cities = doc.getElementsByTagName('street')
-    states = doc.getElementsByTagName('street')
-    postalcodes = doc.getElementsByTagName('street')
+    cities = doc.getElementsByTagName('city')
+    states = doc.getElementsByTagName('state')
+    postalcodes = doc.getElementsByTagName('postalCode')
     descriptions = doc.getElementsByTagName('description')
     thelist = []
     for i in range(0, titles.length):
