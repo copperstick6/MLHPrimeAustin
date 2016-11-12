@@ -2,25 +2,18 @@
 #data is manually added until further notice
 from flask import Flask, render_template
 from flask import request
+import pymongo
+from pymongo import MongoClient
 import time
 app = Flask(__name__)
 
 #oppList is the defined as the current Opportunity List
-oppList = [["","","",""]]
+oppList = [["dankMemes","0","dankMemes","dankMemes"]]
 curTime = (time.strftime("%d/%m/%Y"))
 print(curTime)
 
-@app.route('/addData', methods = ['POST'])
-def addingOpps():
-    #removing objects that contain times we don't need or want
-    print(oppList)
-    for i in oppList:
-        if request.form['date'] > curTime:
-            newList = [request.form['opportunity'], request.form['curPerson'], request.form['date'], request.form['description']]
-            oppList.append(newList)
-    return render_template('index.html')
 
-print(oppList)
+
 
 @app.route('/curData', methods = ['GET'])
 def returnOpps():
