@@ -5,13 +5,17 @@ from flask import request
 import pymongo
 from pymongo import MongoClient
 import time
+import xmlParser
 app = Flask(__name__)
+client = MongoClient()
 
 #oppList is the defined as the current Opportunity List
-oppList = [["dankMemes","0","dankMemes","dankMemes"]]
-curTime = (time.strftime("%d/%m/%Y"))
-print(curTime)
+oppList = xmlParser.parseFrom("https://www.volunteer.gov/footPrintDG.xml")
 
+#object posted: ["userName", "PhoneNumber", "address"]
+@app.route('/addData', methods = ['POST'])
+def addingUser():
+    request.form
 
 
 
