@@ -18,7 +18,7 @@ def addingUser():
     addUserName = str(request.form["username"])
     addPhoneNumber = str(request.form["phonenumber"])
     addAddress = str(request.form["address"])
-    return str([addUserName, addPhoneNUmber, addAddress])
+    return [addUserName, addPhoneNUmber, addAddress]
 
 
 
