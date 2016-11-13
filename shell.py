@@ -10,15 +10,18 @@ app = Flask(__name__)
 client = MongoClient()
 
 
-#oppList is the defined as the current Opportunity List
+# oppList is the defined as the current Opportunity List
 totOpps=[]
-#object posted: ["userName", "PhoneNumber", "address"]
-@app.route('/curUser', methods = ['GET'])
+# object posted: ["userName", "PhoneNumber", "address"]
+@app.route('/addData', methods=['POST'])
 def addingUser():
-    addUserName = str(request.form["username"])
-    addPhoneNumber = str(request.form["phonenumber"])
-    addAddress = str(request.form["address"])
-    return [addUserName, addPhoneNUmber, addAddress]
+    info = {
+        "username": request.form['username'],
+        "phonenumber": request.form['phonenumber'],
+        "address": request.form['address']
+    }
+    return jsonify(info)
+
 
 @app.route('/curData', methods = ['GET'])
 def getOpps():
