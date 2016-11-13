@@ -26,7 +26,6 @@ def getWebUrl(address1, address2):
             tempS2+= i
     tempKey = keys.GoogleMapsKey()
     s+=tempS2 + "&key=" + tempKey
-    print(s)
     return s
 
 def getDistance(address1, address2):
@@ -35,9 +34,7 @@ def getDistance(address1, address2):
     if (webUrl.getcode() == 200):
         str_response = webUrl.read().decode('utf-8')
         obj = json.loads(str_response)
-        if (obj["rows"][0]["elements"][0]["status"] == "ZERO_RESULTS"):
-            return 0
-        else:
+        if (obj["status"] == "OK"):
             s =obj["rows"][0]["elements"][0]["distance"]["value"]
             return s
 def getUnFormattedLongLat(address1):
@@ -49,7 +46,6 @@ def getUnFormattedLongLat(address1):
         else:
             tempString+=i
     s+=tempString + "&key=" + keys.GoogleMapsKey()
-    print(s)
     webUrl = urllib.request.urlopen(s)
     if(webUrl.getcode()==200):
         str_response = webUrl.read().decode('utf-8')
@@ -63,3 +59,4 @@ def getFormattedLat(list1):
     return list1[0]
 def getFormattedLong(list1):
     return list1[1]
+print(getDistance("6813 Beverly Glen Drive", "201 East 21st Street"))
