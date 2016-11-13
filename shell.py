@@ -11,24 +11,23 @@ client = MongoClient()
 
 
 #oppList is the defined as the current Opportunity List
-
+totOpps=[]
 #object posted: ["userName", "PhoneNumber", "address"]
-@app.route('/curData', methods = ['GET'])
+@app.route('/curUser', methods = ['GET'])
 def addingUser():
-<<<<<<< HEAD
-    return str(totOpps)
-=======
     addUserName = str(request.form["username"])
     addPhoneNumber = str(request.form["phonenumber"])
     addAddress = str(request.form["address"])
     return [addUserName, addPhoneNUmber, addAddress]
->>>>>>> 9eb36e918793f50fe6470e543789222123c1b609
+
+@app.route('/curData', methods = ['GET'])
+def getOpps():
+    return str(totOpps)
 
 
 
-@app.route('/addData', methods = ['POST'])
+@app.route('/appData', methods = ['POST'])
 def returnOpps():
-    totOpps = []
     curOpp = str(request.form["opportunity"])
     curDate = str(request.form["date"])
     curLocation = str(request.form["location"])
