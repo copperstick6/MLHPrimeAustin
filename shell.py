@@ -6,12 +6,17 @@ import pymongo
 from pymongo import MongoClient
 import time
 import xmlParser
+import googleMapsDistance
 app = Flask(__name__)
 client = MongoClient()
 
 #oppList is the defined as the current Opportunity List
 oppList = xmlParser.parseFrom("https://www.volunteer.gov/footPrintDG.xml")
-
+fullOPS = [[]]
+curStreet = "6813 Beverly Glen Drive"
+for i in oppList:
+    if(googleMapsDistance.getDistance(i[4],curStreet)>100):
+        fullOPS.append(i)
 #object posted: ["userName", "PhoneNumber", "address"]
 @app.route('/addData', methods = ['POST'])
 def addingUser():
@@ -19,9 +24,16 @@ def addingUser():
 
 
 
-@app.route('/curData', methods = ['GET'])
+@app.route('/curData', methods = ['POST'])
 def returnOpps():
-    print(oppList)
+    curStreet = request.form["street"]
+    fullOPS = [[]]
+    print(curStreet)
+    for i in oppList:
+        print(i[3])
+        if(googleMapsDistance.getDistance(i[3],curStreet)<10000):
+            fullOPS.append(i)
+    oppList.convert(fullOPS)
     return str(oppList)
 
 

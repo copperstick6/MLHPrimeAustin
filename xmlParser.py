@@ -22,8 +22,10 @@ def parseFrom(url_str):
         location += cities[i].firstChild.nodeValue + ' '
         location += states[i].firstChild.nodeValue + ' '
         location += postalcodes[i].firstChild.nodeValue
+        postalCodes = ''
+        postalCodes += postalcodes[i].firstChild.nodeValue
         description = descriptions[i].firstChild
         if description is not None:
             description = description.nodeValue
-        thelist.append([title, startdate, enddate, location, description])
+        thelist.append([title, startdate, enddate, location, postalCodes, description])
     return thelist
