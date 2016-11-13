@@ -15,7 +15,14 @@ client = MongoClient()
 #object posted: ["userName", "PhoneNumber", "address"]
 @app.route('/curData', methods = ['GET'])
 def addingUser():
+<<<<<<< HEAD
     return str(totOpps)
+=======
+    addUserName = str(request.form["username"])
+    addPhoneNumber = str(request.form["phonenumber"])
+    addAddress = str(request.form["address"])
+    return [addUserName, addPhoneNUmber, addAddress]
+>>>>>>> 9eb36e918793f50fe6470e543789222123c1b609
 
 
 
