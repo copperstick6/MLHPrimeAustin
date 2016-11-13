@@ -16,6 +16,8 @@ def parseFrom(url_str):
     for i in range(0, titles.length):
         title = titles[i].firstChild.nodeValue
         startdate = startdates[i].firstChild.nodeValue
+        if int(startdate[0:4]) < 2016:
+            continue
         enddate = enddates[i].firstChild.nodeValue
         location = ''
         location += streets[i].firstChild.nodeValue + ' '
