@@ -1,13 +1,7 @@
 #basic shell with data for our project
 #data is manually added until further notice
-from flask import Flask, render_template, request, jsonify
-import pymongo
-from pymongo import MongoClient
-import time
-import xmlParser
-import googleMapsDistance
+from flask import Flask, render_template, request
 app = Flask(__name__)
-client = MongoClient()
 
 
 # oppList is the defined as the current Opportunity List
