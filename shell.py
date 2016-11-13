@@ -13,26 +13,21 @@ client = MongoClient()
 #oppList is the defined as the current Opportunity List
 
 #object posted: ["userName", "PhoneNumber", "address"]
-@app.route('/addData', methods = ['POST'])
+@app.route('/curData', methods = ['GET'])
 def addingUser():
-    request.form
+    return str(totOpps)
 
 
 
-@app.route('/curData', methods = ['POST'])
+@app.route('/addData', methods = ['POST'])
 def returnOpps():
-    oppList = xmlParser.parseFrom("https://www.volunteer.gov/footPrintDG.xml")
-    curStreet = str(request.form["street"])
-    curStreet = str(curStreet)
-    return distanceGetter(curStreet, oppList)
-
-def distanceGetter(curStreet, oppList):
-    fullOPS=[]
-    for i in oppList:
-        if(googleMapsDistance.getDistance(curStreet, i[4])!=0):
-            if(googleMapsDistance.getDistance(curStreet, i[4])<10000):
-                fullOPS.append(i)
-    return jsonify(fullOPS)
+    totOpps = []
+    curOpp = str(request.form["opportunity"])
+    curDate = str(request.form["date"])
+    curLocation = str(request.form["location"])
+    curNeeded = str(request.form["needed"])
+    totOpps.append([curOpp,curDate,curLocation,curNeeded])
+    return str(totOpps)
 
 
 
