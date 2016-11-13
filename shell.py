@@ -29,7 +29,6 @@ def returnOpps():
             googleMapsDistance.getDistance(i[4],curStreet)
         except ValueError:
             continue
-    oppList.list(fullOPS)
     return str(curStreet)
 
 
