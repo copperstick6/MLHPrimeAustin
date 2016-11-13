@@ -29,7 +29,6 @@ def getWebUrl(address1, address2):
     return s
 
 def getDistance(address1, address2):
-    print(address1)
     webUrl = urllib.request.urlopen(getWebUrl(address1, address2))
     if (webUrl.getcode() == 200):
         str_response = webUrl.read().decode('utf-8')
@@ -37,6 +36,8 @@ def getDistance(address1, address2):
         if (obj["status"] == "OK"):
             s =obj["rows"][0]["elements"][0]["distance"]["value"]
             return s
+        else:
+            return 0
 def getUnFormattedLongLat(address1):
     s = "https://maps.googleapis.com/maps/api/geocode/json?address="
     tempString = ""
@@ -59,4 +60,3 @@ def getFormattedLat(list1):
     return list1[0]
 def getFormattedLong(list1):
     return list1[1]
-print(getDistance("6813 Beverly Glen Drive", "201 East 21st Street"))
