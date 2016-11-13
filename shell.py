@@ -15,7 +15,10 @@ oppList = xmlParser.parseFrom("https://www.volunteer.gov/footPrintDG.xml")
 #object posted: ["userName", "PhoneNumber", "address"]
 @app.route('/addData', methods = ['POST'])
 def addingUser():
-    request.form
+    addUserName = str(request.form["username"])
+    addPhoneNumber = str(request.form["phonenumber"])
+    addAddress = str(request.form["address"])
+    return str([addUserName, addPhoneNUmber, addAddress])
 
 
 
